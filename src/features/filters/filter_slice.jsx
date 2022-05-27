@@ -37,20 +37,26 @@ const filterSlice = createSlice({
     applyFilter: (state, action) => {
       let newValues = [...action.payload];
 
-      //   if (!state.name) {
-      //   }
+      if (state.name !== "") {
+        newValues = newValues.filter((item) => {
+          if (item.name.startsWith(state.name)) {
+            return item;
+          }
+          return null;
+        });
+      }
 
       if (state.area !== "area") {
         newValues = newValues.filter((item) => item.area === state.area);
       }
 
-      if (state.category != "category") {
+      if (state.category !== "category") {
         newValues = newValues.filter(
           (item) => item.category === state.category
         );
       }
 
-      if (state.status != "status") {
+      if (state.status !== "status") {
         newValues = newValues.filter((item) => item.status === state.status);
       }
 

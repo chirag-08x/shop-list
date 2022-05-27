@@ -1,13 +1,14 @@
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
-import moment from "moment";
+// import moment from "moment";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { removeItem } from "../features/filters/filter_slice";
 import { removeListItem } from "../features/shop/shop_slice";
+import React from "react";
 
 const ItemsTable = () => {
   const { filteredShops } = useSelector((state) => state.filters);
-  const today = moment().format("YYYY-MM-DD");
+  //   const today = moment().format("YYYY-MM-DD");
   const dispatch = useDispatch();
 
   const handleDispatch = (id) => {
@@ -20,7 +21,7 @@ const ItemsTable = () => {
       {filteredShops.map((item) => {
         const { id, name, area, category, status } = item;
         return (
-          <>
+          <React.Fragment key={id}>
             <article>
               <p>{name}</p>
               <p>{area}</p>
@@ -43,7 +44,7 @@ const ItemsTable = () => {
                 </button>
               </div>
             </article>
-          </>
+          </React.Fragment>
         );
       })}
     </Wrapper>

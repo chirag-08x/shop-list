@@ -28,6 +28,7 @@ const ViewItems = () => {
 
   useEffect(() => {
     dispatch(resetToDefault([...shopItems]));
+    // eslint-disable-next-line
   }, []);
 
   if (filteredShops.length < 1) {
@@ -109,7 +110,7 @@ const ViewItems = () => {
           >
             <option value="status">status</option>
             <option value="open">open</option>
-            <option value="close">close</option>
+            <option value="closed">closed</option>
           </select>
         </div>
       </form>
