@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home, AddItems, ViewItems } from "./pages";
+import Modal from "./components/modal";
 
 const App = () => {
   return (

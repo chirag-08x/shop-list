@@ -63,4 +63,5 @@ ul {
 body {
   background-color: var(--clr-grey-10);
   font-family: var(--font-primary);
+  position: relative;
 }
