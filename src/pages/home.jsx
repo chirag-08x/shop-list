@@ -24,7 +24,7 @@ const Wrapper = styled.main`
   align-content: center;
   gap: 2rem 0;
 
-  .btn {
+  /* .btn {
     background-color: var(--clr-primary-1);
     border-radius: 1.5rem;
     color: white;
@@ -38,5 +38,5 @@ const Wrapper = styled.main`
       box-shadow: var(--dark-shadow);
       transition: var(--transition);
     }
-  }
+  } */
 `;

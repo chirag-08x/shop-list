@@ -20,9 +20,16 @@ const shopSlice = createSlice({
       state.shopItems.push({ ...action.payload });
       localStorage.setItem("items", JSON.stringify([...state.shopItems]));
     },
+
+    removeListItem: (state, action) => {
+      const id = action.payload;
+      const newItems = state.shopItems.filter((item) => item.id !== id);
+      state.shopItems = [...newItems];
+      localStorage.setItem("items", JSON.stringify([...state.shopItems]));
+    },
   },
 });
 
 export default shopSlice.reducer;
 
-export const { addItemsToList } = shopSlice.actions;
+export const { addItemsToList, removeListItem } = shopSlice.actions;

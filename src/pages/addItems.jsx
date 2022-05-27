@@ -54,6 +54,11 @@ const AddItems = () => {
       return;
     }
 
+    if (openDateValue === "" || closeDateValue === "") {
+      OpenModalCode("Date can't be empty", false);
+      return;
+    }
+
     // Checking if closing date is smaller than opening date.
     if (moment(closeDateValue).isBefore(openDateValue)) {
       OpenModalCode("Closing date cannot be smaller than opening date", false);
@@ -70,14 +75,22 @@ const AddItems = () => {
       return;
     }
 
+    const today = moment().format("YYYY-MM-DD");
+    const status =
+      moment(today).isAfter(closeDateValue) ||
+      moment(today).isBefore(openDateValue)
+        ? "closed"
+        : "open";
+
     dispatch(
       addItemsToList({
         id: uid(),
         name: nameValue,
         area: areaValue,
         category: categoryValue,
-        open: openDateValue,
-        close: closeDateValue,
+        // open: openDateValue,
+        // close: closeDateValue,
+        status,
       })
     );
     OpenModalCode("Your shop has been added successfully.", true);
@@ -242,7 +255,7 @@ const Wrapper = styled.section`
       border: 1px solid var(--clr-grey-1);
     }
 
-    .btn {
+    /* .btn {
       margin-top: 1rem;
       place-self: center;
       background-color: var(--clr-primary-1);
@@ -258,7 +271,7 @@ const Wrapper = styled.section`
         box-shadow: var(--dark-shadow);
         transition: var(--transition);
       }
-    }
+    } */
 
     div {
       display: flex;
