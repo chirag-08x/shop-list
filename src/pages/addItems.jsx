@@ -244,6 +244,8 @@ const Wrapper = styled.section`
       border-radius: 1rem;
       text-transform: capitalize;
       border: 1px solid var(--clr-grey-1);
+      background-color: white;
+      width: 100%;
     }
 
     /* .btn {

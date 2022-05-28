@@ -1,4 +1,4 @@
 import Modal from "./modal";
-import NavigateBtns from "./navigatebtns";
+import ItemsTable from "./table";
 
-export { Modal, NavigateBtns };
+export { Modal, ItemsTable };

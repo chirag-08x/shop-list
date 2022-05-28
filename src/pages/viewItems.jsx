@@ -9,8 +9,8 @@ import {
   getItems,
 } from "../features/filters/filter_slice";
 import { areas, category as cat } from "../utils/helper";
-import ItemsTable from "../components/table";
 import { Link } from "react-router-dom";
+import { ItemsTable } from "../components";
 import { FaArrowLeft } from "react-icons/fa";
 import { clearList } from "../features/shop/shop_slice";
 
