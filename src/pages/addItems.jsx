@@ -221,15 +221,6 @@ const Wrapper = styled.section`
     background-color: var(--clr-white);
     padding: 3rem;
     border-radius: 0.5rem;
-
-    .back-btn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 1rem;
-      gap: 0 0.5rem;
-      color: var(--clr-primary-1);
-    }
   }
 
   .form {

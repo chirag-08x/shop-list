@@ -62,10 +62,30 @@ const filterSlice = createSlice({
 
       state.filteredShops = newValues;
     },
+
+    // clearList: (state, action) => {
+    //   return (state = {
+    //     filteredShops: ,
+    //     name: "",
+    //     area: "area",
+    //     category: "category",
+    //     status: "status",
+    //   });
+    // },
+
+    getItems: (state, action) => {
+      state.filteredShops = [...action.payload];
+    },
   },
 });
 
 export default filterSlice.reducer;
 
-export const { resetToDefault, removeItem, updateFilters, applyFilter } =
-  filterSlice.actions;
+export const {
+  resetToDefault,
+  removeItem,
+  updateFilters,
+  applyFilter,
+  // clearList,
+  getItems,
+} = filterSlice.actions;

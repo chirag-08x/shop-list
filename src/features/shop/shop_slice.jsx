@@ -27,9 +27,14 @@ const shopSlice = createSlice({
       state.shopItems = [...newItems];
       localStorage.setItem("items", JSON.stringify([...state.shopItems]));
     },
+
+    clearList: (state, action) => {
+      state.shopItems = [];
+      localStorage.removeItem("items");
+    },
   },
 });
 
 export default shopSlice.reducer;
 
-export const { addItemsToList, removeListItem } = shopSlice.actions;
+export const { addItemsToList, removeListItem, clearList } = shopSlice.actions;

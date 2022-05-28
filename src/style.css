@@ -82,3 +82,13 @@ body {
   box-shadow: var(--dark-shadow);
   transition: var(--transition);
 }
+
+.back-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 0 0.5rem;
+  color: var(--clr-primary-1);
+  text-transform: capitalize;
+}

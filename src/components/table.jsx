@@ -68,6 +68,10 @@ const Wrapper = styled.section`
     border-radius: 0.3rem;
     padding: 1rem;
 
+    p {
+      font-size: 0.875rem;
+    }
+
     .btns {
       button {
         background: transparent;
@@ -89,6 +93,14 @@ const Wrapper = styled.section`
         &:hover {
           color: var(--clr-red-light);
         }
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    article {
+      p {
+        font-size: 1rem;
       }
     }
   }

@@ -5,10 +5,14 @@ import {
   resetToDefault,
   updateFilters,
   applyFilter,
+  // clearList,
+  getItems,
 } from "../features/filters/filter_slice";
 import { areas, category as cat } from "../utils/helper";
 import ItemsTable from "../components/table";
 import { Link } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
+import { clearList } from "../features/shop/shop_slice";
 
 const ViewItems = () => {
   const { filteredShops, name, area, category, status } = useSelector(
@@ -31,21 +35,26 @@ const ViewItems = () => {
     // eslint-disable-next-line
   }, []);
 
-  if (filteredShops.length < 1) {
-    return (
-      <EmptyWrapper>
-        <h3>No shops to display</h3>
-        <p>
-          Please add some shops here{" "}
-          <span>
-            <Link to={"/add"} className="btn">
-              add shops
-            </Link>
-          </span>{" "}
-        </p>
-      </EmptyWrapper>
-    );
-  }
+  useEffect(() => {
+    dispatch(getItems([...shopItems]));
+    // eslint-disable-next-line
+  }, [shopItems]);
+
+  // if (filteredShops.length < 1) {
+  //   return (
+  //     <EmptyWrapper>
+  //       <h3>No shops to display</h3>
+  //       <p>
+  //         Please add some shops here{" "}
+  //         <span>
+  //           <Link to={"/add"} className="btn">
+  //             add shops
+  //           </Link>
+  //         </span>{" "}
+  //       </p>
+  //     </EmptyWrapper>
+  //   );
+  // }
 
   return (
     <Wrapper>
@@ -114,7 +123,25 @@ const ViewItems = () => {
           </select>
         </div>
       </form>
-      <ItemsTable />
+      {filteredShops.length > 1 ? (
+        <ItemsTable />
+      ) : (
+        <div style={{ marginTop: "1rem" }}>
+          <h4>Sorry no shops matched your search</h4>
+        </div>
+      )}
+      <section className="btns">
+        <button className="btn" onClick={() => dispatch(clearList())}>
+          clear list
+        </button>
+        <Link to={"/"} className="back-btn">
+          {" "}
+          <span>
+            <FaArrowLeft />
+          </span>{" "}
+          go back
+        </Link>
+      </section>
     </Wrapper>
   );
 };
@@ -143,10 +170,11 @@ const Wrapper = styled.section`
     label {
       text-transform: capitalize;
       letter-spacing: 1px;
+      font-size: 0.875rem;
     }
 
     input {
-      width: 8rem;
+      width: 6.5rem;
       border-radius: 0.3rem;
       border: 1px solid black;
       padding: 0.25rem 0.5rem;
@@ -161,6 +189,21 @@ const Wrapper = styled.section`
 
       option {
         display: grid;
+      }
+    }
+  }
+
+  .btns {
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .form {
+      input {
+        width: 8rem;
+      }
+      label {
+        font-size: 1rem;
       }
     }
   }
