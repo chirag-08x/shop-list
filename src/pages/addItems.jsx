@@ -54,11 +54,6 @@ const AddItems = () => {
       return;
     }
 
-    if (openDateValue === "" || closeDateValue === "") {
-      OpenModalCode("Date can't be empty", false);
-      return;
-    }
-
     // Checking if closing date is smaller than opening date.
     if (moment(closeDateValue).isBefore(openDateValue)) {
       OpenModalCode("Closing date cannot be smaller than opening date", false);
@@ -72,6 +67,11 @@ const AddItems = () => {
 
     if (categoryValue === "category") {
       OpenModalCode("Please provide a valid value for category field", false);
+      return;
+    }
+
+    if (openDateValue === "" || closeDateValue === "") {
+      OpenModalCode("Date can't be empty", false);
       return;
     }
 
@@ -126,7 +126,6 @@ const AddItems = () => {
               placeholder="Name"
               onChange={handleChange}
               name="name"
-              //   required
             />
           </div>
           {/*  */}
@@ -137,7 +136,6 @@ const AddItems = () => {
               value={formValue.area}
               onChange={handleChange}
               name="area"
-              //   required
             >
               {areas.map((item, idx) => {
                 return (
@@ -156,7 +154,6 @@ const AddItems = () => {
               value={formValue.category}
               onChange={handleChange}
               name="category"
-              //   required
             >
               {category.map((item, idx) => {
                 return (
@@ -174,7 +171,6 @@ const AddItems = () => {
               type="date"
               id="openDate"
               value={formValue.openDate}
-              //   required
               onChange={handleChange}
               name="openDate"
             />
@@ -186,7 +182,6 @@ const AddItems = () => {
               type="date"
               id="closedate"
               value={formValue.closeDate}
-              //   required
               onChange={handleChange}
               name="closeDate"
             />
@@ -237,6 +232,8 @@ const Wrapper = styled.section`
       padding: 0.4rem 0.6rem;
       border: 1px solid var(--clr-grey-1);
       border-radius: 1rem;
+      background-color: white;
+      width: 100%;
     }
 
     select {

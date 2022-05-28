@@ -23,20 +23,4 @@ const Wrapper = styled.main`
   justify-items: center;
   align-content: center;
   gap: 2rem 0;
-
-  /* .btn {
-    background-color: var(--clr-primary-1);
-    border-radius: 1.5rem;
-    color: white;
-    text-transform: capitalize;
-    padding: 1rem 1.5rem;
-    letter-spacing: 0.1rem;
-    display: grid;
-    place-items: center;
-
-    &:hover {
-      box-shadow: var(--dark-shadow);
-      transition: var(--transition);
-    }
-  } */
 `;

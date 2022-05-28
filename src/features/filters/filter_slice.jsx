@@ -22,13 +22,6 @@ const filterSlice = createSlice({
       });
     },
 
-    removeItem: (state, action) => {
-      const id = action.payload;
-      console.log(id);
-      const newItems = state.filteredShops.filter((item) => item.id !== id);
-      state.filteredShops = [...newItems];
-    },
-
     updateFilters: (state, action) => {
       const { name, value } = action.payload;
       state[name] = value;
@@ -63,16 +56,6 @@ const filterSlice = createSlice({
       state.filteredShops = newValues;
     },
 
-    // clearList: (state, action) => {
-    //   return (state = {
-    //     filteredShops: ,
-    //     name: "",
-    //     area: "area",
-    //     category: "category",
-    //     status: "status",
-    //   });
-    // },
-
     getItems: (state, action) => {
       state.filteredShops = [...action.payload];
     },
@@ -81,11 +64,5 @@ const filterSlice = createSlice({
 
 export default filterSlice.reducer;
 
-export const {
-  resetToDefault,
-  removeItem,
-  updateFilters,
-  applyFilter,
-  // clearList,
-  getItems,
-} = filterSlice.actions;
+export const { resetToDefault, updateFilters, applyFilter, getItems } =
+  filterSlice.actions;

@@ -61,16 +61,15 @@ const Wrapper = styled.section`
     }
 
     .modal-text {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      align-content: center;
+      display: grid;
+      place-items: center;
       font-size: 1rem;
       gap: 0 0.5rem;
       letter-spacing: 1px;
       color: ${(props) => props.color};
 
       p {
+        margin-top: 0.5rem;
         text-transform: capitalize;
       }
     }

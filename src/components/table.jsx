@@ -1,20 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
-// import moment from "moment";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { removeItem } from "../features/filters/filter_slice";
 import { removeListItem } from "../features/shop/shop_slice";
 import React from "react";
 
 const ItemsTable = () => {
   const { filteredShops } = useSelector((state) => state.filters);
-  //   const today = moment().format("YYYY-MM-DD");
   const dispatch = useDispatch();
-
-  const handleDispatch = (id) => {
-    dispatch(removeListItem(id));
-    dispatch(removeItem(id));
-  };
 
   return (
     <Wrapper>
@@ -26,19 +18,14 @@ const ItemsTable = () => {
               <p>{name}</p>
               <p>{area}</p>
               <p>{category}</p>
-              <p>
-                {/* {moment(today).isAfter(close) || moment(today).isBefore(open)
-                  ? "closed"
-                  : "open"} */}
-                {status}
-              </p>
+              <p>{status}</p>
               <div className="btns">
                 <button className="edit-btn">
                   <FaEdit />
                 </button>
                 <button
                   className="delete-btn"
-                  onClick={() => handleDispatch(id)}
+                  onClick={() => dispatch(removeListItem(id))}
                 >
                   <FaTrash />
                 </button>

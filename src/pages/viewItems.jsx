@@ -5,12 +5,11 @@ import {
   resetToDefault,
   updateFilters,
   applyFilter,
-  // clearList,
   getItems,
 } from "../features/filters/filter_slice";
 import { areas, category as cat } from "../utils/helper";
 import { Link } from "react-router-dom";
-import { ItemsTable } from "../components";
+import ItemsTable from "../components/table";
 import { FaArrowLeft } from "react-icons/fa";
 import { clearList } from "../features/shop/shop_slice";
 
@@ -19,7 +18,7 @@ const ViewItems = () => {
     (state) => state.filters
   );
 
-  const { shopItems } = useSelector((state) => state.shop);
+  const { shopItems, editing } = useSelector((state) => state.shop);
 
   const dispatch = useDispatch();
 
@@ -40,29 +39,13 @@ const ViewItems = () => {
     // eslint-disable-next-line
   }, [shopItems]);
 
-  // if (filteredShops.length < 1) {
-  //   return (
-  //     <EmptyWrapper>
-  //       <h3>No shops to display</h3>
-  //       <p>
-  //         Please add some shops here{" "}
-  //         <span>
-  //           <Link to={"/add"} className="btn">
-  //             add shops
-  //           </Link>
-  //         </span>{" "}
-  //       </p>
-  //     </EmptyWrapper>
-  //   );
-  // }
-
   return (
     <Wrapper>
       <h1>List of Shops</h1>
 
       <form className="form">
         <div>
-          <label htmlFor="name">Name : </label>
+          <label htmlFor="name">Name: </label>
           <input
             type="text"
             name="name"
@@ -74,7 +57,7 @@ const ViewItems = () => {
         </div>
         {/*  */}
         <div>
-          <label htmlFor="area">area : </label>
+          <label htmlFor="area">area: </label>
           <select
             name="area"
             id="area"
@@ -92,7 +75,7 @@ const ViewItems = () => {
         </div>
         {/*  */}
         <div>
-          <label htmlFor="category">category : </label>
+          <label htmlFor="category">category: </label>
           <select
             name="category"
             id="category"
@@ -110,7 +93,7 @@ const ViewItems = () => {
         </div>
         {/*  */}
         <div>
-          <label htmlFor="status">status : </label>
+          <label htmlFor="status">status:</label>
           <select
             name="status"
             id="status"
@@ -123,7 +106,7 @@ const ViewItems = () => {
           </select>
         </div>
       </form>
-      {filteredShops.length > 1 ? (
+      {filteredShops.length >= 1 ? (
         <ItemsTable />
       ) : (
         <div style={{ marginTop: "1rem" }}>
@@ -154,6 +137,7 @@ const Wrapper = styled.section`
   margin: 0 auto;
   text-align: center;
   padding: 5rem 0;
+  position: relative;
 
   h1 {
     margin-bottom: 2rem;
@@ -161,16 +145,24 @@ const Wrapper = styled.section`
 
   .form {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 5rem;
+    grid-template-rows: 1f 1fr 1fr 1fr;
     align-content: center;
     justify-items: center;
     margin-bottom: 2rem;
-    gap: 0 1rem;
+    gap: 0.25rem 1rem;
+
+    div {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 2rem;
+      place-items: center;
+    }
 
     label {
       text-transform: capitalize;
       letter-spacing: 1px;
       font-size: 0.875rem;
+      justify-self: end;
     }
 
     input {
@@ -186,10 +178,7 @@ const Wrapper = styled.section`
       border: 1px solid black;
       padding: 0.25rem 0.5rem;
       text-transform: capitalize;
-
-      option {
-        display: grid;
-      }
+      background-color: white;
     }
   }
 
@@ -197,26 +186,22 @@ const Wrapper = styled.section`
     margin-top: 1rem;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
     .form {
-      input {
-        width: 8rem;
+      grid-template-columns: 1fr 1fr 1fr 1fr 5rem;
+      grid-template-rows: 1fr;
+      place-items: center;
+
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0 0.5rem;
       }
+
       label {
         font-size: 1rem;
       }
     }
-  }
-`;
-
-const EmptyWrapper = styled.section`
-  height: 100vh;
-  display: grid;
-  justify-items: center;
-  align-content: center;
-  gap: 2rem 0;
-
-  .btn {
-    padding: 0.7rem 1rem;
   }
 `;
