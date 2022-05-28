@@ -5,10 +5,10 @@ const Home = () => {
   return (
     <Wrapper>
       <Link to={"/add"} className="btn">
-        add items
+        add shops
       </Link>
       <Link to={"/view"} className="btn">
-        view items
+        view shops
       </Link>
     </Wrapper>
   );
