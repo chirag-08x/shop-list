@@ -88,8 +88,6 @@ const AddItems = () => {
         name: nameValue,
         area: areaValue,
         category: categoryValue,
-        // open: openDateValue,
-        // close: closeDateValue,
         status,
       })
     );

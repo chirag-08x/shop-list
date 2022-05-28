@@ -60,6 +60,7 @@ const Wrapper = styled.section`
     }
 
     .btns {
+      margin-top: 0;
       button {
         background: transparent;
         border: none;
