@@ -18,7 +18,7 @@ const ViewItems = () => {
     (state) => state.filters
   );
 
-  const { shopItems, editing } = useSelector((state) => state.shop);
+  const { shopItems } = useSelector((state) => state.shop);
 
   const dispatch = useDispatch();
 
@@ -36,6 +36,7 @@ const ViewItems = () => {
 
   useEffect(() => {
     dispatch(getItems([...shopItems]));
+    dispatch(applyFilter(shopItems));
     // eslint-disable-next-line
   }, [shopItems]);
 
